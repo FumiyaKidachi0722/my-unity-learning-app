@@ -1,0 +1,80 @@
+[
+  {
+    "id": "1",
+    "title": "レッスン 1: Unity と C# の基本",
+    "content": "<h2>レッスン 1 の概要</h2><p>このレッスンでは、Unity の基本操作と C# の基礎文法を学びます。たとえば、<strong>変数</strong>はデータを入れる箱、<strong>条件分岐</strong>は状況によって処理を分ける方法、<strong>ループ</strong>は同じ処理を繰り返す方法です。実際のコード例を通して、これらの考え方を体験しましょう。</p><ul><li>変数：データを入れる箱</li><li>条件分岐：状況に合わせた選択</li><li>ループ：繰り返し処理</li></ul>",
+    "sampleCode": "// レッスン 1 のコード例\nusing System; // システムの機能を使えるようにする\n\n// Example クラスは、みんなが学ぶためのサンプルです\npublic class Example {\n    // Main メソッドはプログラムのエントリーポイントです。ここから実行が始まります\n    public static void Main() {\n        // 変数を作ります。変数は情報を保存する箱です\n        string message = \"Hello Unity!\";  // 文字を保存する箱\n        int score = 100;  // 数字を保存する箱\n        bool isActive = true;  // 真偽（本当かどうか）を保存する箱\n\n        // 画面にメッセージを表示します\n        Console.WriteLine(\"Welcome to Unity programming!\"); // ようこそ！のメッセージ\n        Console.WriteLine(\"Message: \" + message); // 変数 message の中身を表示\n        Console.WriteLine(\"Score: \" + score); // 変数 score の中身を表示\n        Console.WriteLine(\"Active: \" + isActive); // 変数 isActive の中身を表示\n        // プログラム終了\n    }\n}\n",
+    "duration": "15分",
+    "order": 1,
+    "quizzes": [
+      {
+        "question": "変数とは何ですか？",
+        "options": ["データを入れる箱", "条件に合わせた処理", "繰り返し処理"],
+        "correctAnswer": "データを入れる箱",
+        "explanations": {
+          "データを入れる箱": "変数は、プログラムで値（数字や文字など）を一時的に保存するための箱のようなものです。",
+          "条件に合わせた処理": "これは if 文などで使われますが、変数自体の役割ではありません。",
+          "繰り返し処理": "これはループ処理で使われる概念であり、変数の説明ではありません。"
+        }
+      },
+      {
+        "question": "Console.WriteLine の役割は何ですか？",
+        "options": ["画面に出力する", "入力を受け付ける", "データを格納する"],
+        "correctAnswer": "画面に出力する",
+        "explanations": {
+          "画面に出力する": "Console.WriteLine は、プログラムの結果やメッセージを画面に表示するための関数です。",
+          "入力を受け付ける": "入力を受けるのは Console.ReadLine などが使われます。",
+          "データを格納する": "変数にデータを格納する機能とは異なります。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "レッスン 2: さらに進んだ C# の基本概念",
+    "content": "<h2>レッスン 2 の概要</h2><p>このレッスンでは、<strong>if 文</strong> を使った条件分岐や、<strong>for/while ループ</strong> を使った繰り返し処理を学びます。実際のコード例を動かしながら、これらの基本概念を理解しましょう。</p>",
+    "sampleCode": "// レッスン 2 のコード例\nusing System; // システムの機能を使えるようにする\n\npublic class AdvancedExample {\n    public static void Main() {\n        // if文による条件分岐\n        if (true) {\n            Console.WriteLine(\"条件が真です\");\n        } else {\n            Console.WriteLine(\"条件が偽です\");\n        }\n\n        // forループによる繰り返し処理\n        for (int i = 0; i < 5; i++) {\n            Console.WriteLine(\"forループ: \" + i);\n        }\n\n        // whileループによる繰り返し処理\n        int j = 0;\n        while (j < 3) {\n            Console.WriteLine(\"whileループ: \" + j);\n            j++;\n        }\n    }\n}\n",
+    "duration": "20分",
+    "order": 2,
+    "quizzes": [
+      {
+        "question": "if 文で使うキーワードはどれですか？",
+        "options": ["if", "for", "while"],
+        "correctAnswer": "if",
+        "explanations": {
+          "if": "if 文は、ある条件が成立するかどうかをチェックし、その結果に応じて処理を分岐するために使用します。",
+          "for": "for 文は、一定の回数繰り返すためのループ処理に使用されます。",
+          "while": "while 文は、条件が成立している間、処理を繰り返すために使用されます。"
+        }
+      },
+      {
+        "question": "for ループの基本構文はどれですか？",
+        "options": [
+          "for (int i = 0; i < 10; i++) { ... }",
+          "if (i < 10) { ... }",
+          "while (i < 10) { ... }"
+        ],
+        "correctAnswer": "for (int i = 0; i < 10; i++) { ... }",
+        "explanations": {
+          "for (int i = 0; i < 10; i++) { ... }": "for ループは、初期化、条件判定、更新を含む繰り返し処理の基本的な構文です。",
+          "if (i < 10) { ... }": "if 文は条件分岐に使い、ループ処理には適していません。",
+          "while (i < 10) { ... }": "while 文もループ処理ですが、for ループの構文とは異なります。"
+        }
+      },
+      {
+        "question": "while ループはどのような場合に使いますか？",
+        "options": [
+          "条件が成立する間、繰り返し処理を行うため",
+          "条件に応じた分岐処理を行うため",
+          "コードを一回だけ実行するため"
+        ],
+        "correctAnswer": "条件が成立する間、繰り返し処理を行うため",
+        "explanations": {
+          "条件が成立する間、繰り返し処理を行うため": "while ループは、条件が true の間、処理を繰り返し実行するために使用します。",
+          "条件に応じた分岐処理を行うため": "これは if 文の役割です。",
+          "コードを一回だけ実行するため": "一回だけの実行なら、通常のコードの流れで十分です。"
+        }
+      }
+    ]
+  }
+]
