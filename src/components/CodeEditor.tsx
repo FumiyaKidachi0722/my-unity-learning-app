@@ -39,7 +39,10 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({ initialCode }) => {
   return (
     <div className="mb-4">
       {/* 折りたたみのトグルボタン */}
-      <Button onClick={() => setIsExpanded((prev) => !prev)}>
+      <Button
+        className="bg-amber-700"
+        onClick={() => setIsExpanded((prev) => !prev)}
+      >
         {isExpanded ? "CodeEditorを閉じる" : "CodeEditorを開く"}
       </Button>
       {isExpanded && (
@@ -53,7 +56,9 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({ initialCode }) => {
             />
           </CardContent>
           <CardFooter className="flex flex-col gap-2">
-            <Button onClick={handleRunCode}>コード実行</Button>
+            <Button className="bg-amber-700" onClick={handleRunCode}>
+              コード実行
+            </Button>
             {output && (
               <pre className="bg-gray-100 p-2 rounded whitespace-pre-wrap">
                 {output}

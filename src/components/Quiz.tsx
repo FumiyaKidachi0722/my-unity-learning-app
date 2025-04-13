@@ -54,7 +54,9 @@ export const Quiz: React.FC<QuizProps> = ({
         </ul>
       </CardContent>
       <CardFooter className="flex flex-col gap-2">
-        <Button onClick={handleSubmit}>回答する</Button>
+        <Button className="bg-amber-700" onClick={handleSubmit}>
+          回答する
+        </Button>
         {result && (
           <>
             <p className="mt-2 font-bold">{result}</p>

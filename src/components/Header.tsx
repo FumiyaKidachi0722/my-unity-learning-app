@@ -4,19 +4,32 @@ import React from "react";
 
 export const Header: React.FC = () => {
   return (
-    <header className="bg-blue-600 text-white p-4 flex justify-between items-center">
-      <h1 className="font-bold text-xl">Unity学習アプリ</h1>
-      <nav>
-        <Link href="/" className="mr-4 hover:underline">
-          ホーム
+    <header className="sticky top-0 z-50 bg-gray-800 text-white px-4 py-3 shadow-md">
+      <div className="container mx-auto flex items-center justify-between">
+        <Link href="/" className="text-2xl font-bold">
+          Unity学習アプリ
         </Link>
-        <Link href="/lesson" className="mr-4 hover:underline">
-          レッスン一覧
-        </Link>
-        <Link href="/dashboard" className="hover:underline">
-          ダッシュボード
-        </Link>
-      </nav>
+        <nav className="flex space-x-6">
+          <Link
+            href="/"
+            className="hover:underline hover:text-gray-300 transition-colors"
+          >
+            ホーム
+          </Link>
+          <Link
+            href="/lesson"
+            className="hover:underline hover:text-gray-300 transition-colors"
+          >
+            レッスン一覧
+          </Link>
+          <Link
+            href="/dashboard"
+            className="hover:underline hover:text-gray-300 transition-colors"
+          >
+            ダッシュボード
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 };

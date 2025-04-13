@@ -12,7 +12,7 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
   children,
 }) => {
   return (
-    <Button onClick={onClick} variant="default" className="m-2">
+    <Button onClick={onClick} variant="default" className="bg-amber-700 m-2">
       {children}
     </Button>
   );
