@@ -1,72 +1,178 @@
-// src/app/dashboard/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";
 import progressData from "@/data/progress.json";
-import type { LessonProgress, Badge, ProgressData } from "@/types/dashboard";
+import type { ProgressData } from "@/types/dashboard";
+import Link from "next/link";
+
+// shadcn/ui コンポーネント
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { Badge as UiBadge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function Dashboard() {
-  const [userEmail, setUserEmail] = useState<string | null>(null);
-  const [completedLessons, setCompletedLessons] = useState<LessonProgress[]>(
-    []
-  );
-  const [badges, setBadges] = useState<Badge[]>([]);
+  const [data, setData] = useState<ProgressData | null>(null);
 
   useEffect(() => {
-    // ダミーとして認証済みと判断しメールアドレスをセット
-    setUserEmail("student@example.com");
-
-    // ダミーデータの型キャスト
-    const data = progressData as ProgressData;
-    setCompletedLessons(data.completedLessons);
-    setBadges(data.badges);
+    setData(progressData as ProgressData);
   }, []);
 
-  if (!userEmail) {
+  if (!data) {
     return (
-      <div className="py-8 text-center">
-        <p>ユーザー情報を取得中です...</p>
+      <div className="py-12 text-center">
+        <p className="text-lg text-gray-500">ダッシュボードを読み込み中…</p>
       </div>
     );
   }
 
-  return (
-    <div className="py-8 px-4 max-w-xl mx-auto">
-      <h1 className="text-3xl mb-4">マイダッシュボード</h1>
-      <p className="mb-6">
-        ようこそ、<strong>{userEmail}</strong> さん！
-      </p>
+  const {
+    userEmail,
+    totalLessons,
+    completedCount,
+    completionRate,
+    loginStreak,
+    totalTimeSpentMinutes,
+    upcomingLessons,
+    completedLessons,
+    badges,
+  } = data;
 
-      <section className="mb-8">
-        <h2 className="text-2xl mb-2">完了したレッスン</h2>
+  return (
+    <div className="py-10 px-6 max-w-4xl mx-auto space-y-10">
+      {/* ヘッダー */}
+      <header className="flex items-center justify-between">
+        <div>
+          <h1 className="text-4xl font-bold">マイダッシュボード</h1>
+          <p className="mt-1 text-gray-700">
+            ようこそ、<strong>{userEmail}</strong> さん！
+          </p>
+        </div>
+        <Avatar>
+          <AvatarImage src="/avatar-placeholder.png" alt="User avatar" />
+          <AvatarFallback>{userEmail.charAt(0).toUpperCase()}</AvatarFallback>
+        </Avatar>
+      </header>
+
+      <Separator />
+
+      {/* サマリーカード群 */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <Card>
+          <CardHeader>
+            <CardTitle>進捗率</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <p className="text-3xl font-semibold">{completionRate}%</p>
+            <Progress value={completionRate} />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>完了レッスン</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-3xl font-semibold">
+              {completedCount} / {totalLessons}
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>連続ログイン</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-3xl font-semibold">{loginStreak} 日</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>学習時間</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-3xl font-semibold">{totalTimeSpentMinutes} 分</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Separator />
+
+      {/* 次のレッスン */}
+      {upcomingLessons.length > 0 && (
+        <section className="space-y-4">
+          <h2 className="text-2xl font-semibold">次のレッスン</h2>
+          <ul className="space-y-2">
+            {upcomingLessons.map(({ id, title }) => (
+              <Card key={id} className="hover:bg-gray-50 transition">
+                <CardContent>
+                  <Link
+                    href={`/lesson/${id}`}
+                    className="text-lg font-medium hover:underline"
+                  >
+                    {title}
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <Separator />
+
+      {/* 完了レッスン一覧 */}
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold">完了したレッスン</h2>
         {completedLessons.length > 0 ? (
-          <ul className="list-disc list-inside">
-            {completedLessons.map(({ id, title }) => (
-              <li key={id}>
-                {title} (ID: {id})
-              </li>
+          <ul className="space-y-3">
+            {completedLessons.map(({ id, title, completedAt }) => (
+              <Card key={id} className="flex justify-between items-center">
+                <CardContent>
+                  <p className="font-medium">{title}</p>
+                </CardContent>
+                <CardFooter>
+                  <time className="text-sm text-gray-500">
+                    {new Date(completedAt).toLocaleDateString()}
+                  </time>
+                </CardFooter>
+              </Card>
             ))}
           </ul>
         ) : (
-          <p>まだレッスンを完了していません。</p>
+          <p className="text-gray-600">まだレッスンを完了していません。</p>
         )}
       </section>
 
-      <section>
-        <h2 className="text-2xl mb-2">獲得したバッジ</h2>
+      <Separator />
+
+      {/* バッジセクション */}
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold">獲得したバッジ</h2>
         {badges.length > 0 ? (
-          <ul className="flex flex-wrap gap-2">
-            {badges.map(({ id, name }) => (
-              <li
-                key={id}
-                className="bg-yellow-200 text-yellow-800 px-3 py-1 rounded-full"
-              >
-                {name}
+          <ul className="flex flex-wrap gap-4">
+            {badges.map(({ id, name, description }) => (
+              <li key={id} className="flex flex-col items-center space-y-1">
+                <UiBadge variant="secondary">{name}</UiBadge>
+                {description && (
+                  <p className="text-center text-sm text-gray-500">
+                    {description}
+                  </p>
+                )}
               </li>
             ))}
           </ul>
         ) : (
-          <p>まだバッジがありません。</p>
+          <p className="text-gray-600">まだバッジがありません。</p>
         )}
       </section>
     </div>

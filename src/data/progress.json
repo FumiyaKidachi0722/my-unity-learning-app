@@ -1,10 +1,41 @@
 {
+  "userEmail": "student@example.com",
+  "totalLessons": 12,
+  "completedCount": 3,
+  "completionRate": 25,
+  "loginStreak": 5,
+  "totalTimeSpentMinutes": 87,
+  "upcomingLessons": [
+    { "id": "4", "title": "関数（メソッド）の基本" },
+    { "id": "5", "title": "座標と移動" }
+  ],
   "completedLessons": [
-    { "id": "1", "title": "Unity と C# の基本" },
-    { "id": "2", "title": "さらに進んだ C# の基本" }
+    {
+      "id": "1",
+      "title": "変数と出力",
+      "completedAt": "2025-04-15T14:32:00Z"
+    },
+    {
+      "id": "2",
+      "title": "条件分岐",
+      "completedAt": "2025-04-16T09:21:00Z"
+    },
+    {
+      "id": "3",
+      "title": "ループ",
+      "completedAt": "2025-04-17T18:40:00Z"
+    }
   ],
   "badges": [
-    { "id": "badge1", "name": "レッスン1完了" },
-    { "id": "badge2", "name": "連続ログイン3日達成" }
+    {
+      "id": "badge1",
+      "name": "スターター🥇",
+      "description": "レッスン1～3をクリア！"
+    },
+    {
+      "id": "badge2",
+      "name": "ログイン王🏆",
+      "description": "5日連続で学習しました"
+    }
   ]
 }
