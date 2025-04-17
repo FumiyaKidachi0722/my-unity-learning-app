@@ -28,6 +28,7 @@ export default function LessonPage() {
     <div>
       {/* レッスン詳細 */}
       <LessonDetails
+        id={lesson.id}
         title={lesson.title}
         overview={lesson.content}
         details={lesson.details}

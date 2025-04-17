@@ -38,7 +38,7 @@ export const LessonSidebar: React.FC = () => {
             >
               {/* 横幅を制限して…で省略 */}
               <span className="block truncate max-w-[200px] px-2 py-1">
-                {lesson.title}
+                Lesson {lesson.id}: {lesson.title}
               </span>
             </Button>
           </Link>

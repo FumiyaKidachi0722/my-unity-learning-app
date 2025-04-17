@@ -5,12 +5,14 @@ import React from "react";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 interface LessonDetailsProps {
+  id: string;
   title: string;
   overview: string;
   details: string[];
 }
 
 export const LessonDetails: React.FC<LessonDetailsProps> = ({
+  id,
   title,
   overview,
   details,
@@ -18,7 +20,9 @@ export const LessonDetails: React.FC<LessonDetailsProps> = ({
   return (
     <Card className="mb-6 bg-zinc-800 border-zinc-600 text-gray-200">
       <CardHeader>
-        <h2 className="text-2xl font-bold text-white">{title}</h2>
+        <h2 className="text-2xl font-bold text-white">
+          Lesson {id}: {title}
+        </h2>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* 概要 */}
