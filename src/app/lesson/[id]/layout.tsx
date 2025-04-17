@@ -1,5 +1,3 @@
-// src/app/lesson/[id]/layout.tsx
-
 import React from "react";
 import { LessonSidebar } from "@/components/LessonSidebar";
 
@@ -15,7 +13,6 @@ export default function LessonLayout({
 }) {
   return (
     <div className="min-h-screen w-full flex flex-col">
-      {/* レッスン領域 */}
       <div className="flex flex-1">
         {/* サイドバー */}
         <aside
@@ -25,17 +22,17 @@ export default function LessonLayout({
             h-screen
             overflow-y-auto
             sticky top-0
-            border-r
+            border-r border-zinc-700
+            bg-zinc-800
           "
         >
-          {/* サイドバー内にパディングを入れ、左余白を最小限に */}
           <div className="py-4 px-2">
             <LessonSidebar />
           </div>
         </aside>
 
-        {/* メインコンテンツ */}
-        <main className="flex-1 p-4">{children}</main>
+        {/* メイン */}
+        <main className="flex-1 p-6 bg-zinc-700 text-gray-100">{children}</main>
       </div>
     </div>
   );

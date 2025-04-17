@@ -1,4 +1,3 @@
-// src/components/CodeEditor.tsx
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -28,7 +27,6 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({ initialCode }) => {
       }
 
       const result = await response.json();
-      // JDoodle API のレスポンスは output に実行結果が格納されるため、result.output を参照します
       setOutput(result.output || result.stderr || "実行結果なし");
     } catch (error) {
       console.error("コード実行エラー:", error);
@@ -38,29 +36,33 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({ initialCode }) => {
 
   return (
     <div className="mb-4">
-      {/* 折りたたみのトグルボタン */}
       <Button
-        className="bg-amber-700"
+        variant="secondary"
+        className="bg-amber-600 text-white hover:bg-amber-500"
         onClick={() => setIsExpanded((prev) => !prev)}
       >
-        {isExpanded ? "CodeEditorを閉じる" : "CodeEditorを開く"}
+        {isExpanded ? "コードを閉じる" : "コードを開く"}
       </Button>
       {isExpanded && (
-        <Card className="mt-2">
+        <Card className="mt-2 bg-zinc-800 border-zinc-600 text-gray-200">
           <CardContent>
             <Textarea
               value={code}
               onChange={(e) => setCode(e.target.value)}
-              className="w-full h-40 p-2 border"
+              className="w-full h-40 p-2 bg-zinc-700 border-zinc-600 text-gray-200 placeholder-zinc-500"
               placeholder="ここに C# コードを入力..."
             />
           </CardContent>
           <CardFooter className="flex flex-col gap-2">
-            <Button className="bg-amber-700" onClick={handleRunCode}>
+            <Button
+              variant="secondary"
+              className="bg-amber-600 text-white hover:bg-amber-500"
+              onClick={handleRunCode}
+            >
               コード実行
             </Button>
             {output && (
-              <pre className="bg-gray-100 p-2 rounded whitespace-pre-wrap">
+              <pre className="bg-zinc-700 text-gray-200 p-2 rounded whitespace-pre-wrap">
                 {output}
               </pre>
             )}

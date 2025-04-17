@@ -1,78 +1,425 @@
 [
   {
     "id": "1",
-    "title": "レッスン 1: Unity と C# の基本",
-    "content": "<h2>レッスン 1 の概要</h2><p>このレッスンでは、Unity の基本操作と C# の基礎文法を学びます。たとえば、<strong>変数</strong>はデータを入れる箱、<strong>条件分岐</strong>は状況によって処理を分ける方法、<strong>ループ</strong>は同じ処理を繰り返す方法です。実際のコード例を通して、これらの考え方を体験しましょう。</p><ul><li>変数：データを入れる箱</li><li>条件分岐：状況に合わせた選択</li><li>ループ：繰り返し処理</li></ul>",
-    "sampleCode": "// レッスン 1 のコード例\nusing System; // システムの機能を使えるようにする\n\n// Example クラスは、みんなが学ぶためのサンプルです\npublic class Example {\n    // Main メソッドはプログラムのエントリーポイントです。ここから実行が始まります\n    public static void Main() {\n        // 変数を作ります。変数は情報を保存する箱です\n        string message = \"Hello Unity!\";  // 文字を保存する箱\n        int score = 100;  // 数字を保存する箱\n        bool isActive = true;  // 真偽（本当かどうか）を保存する箱\n\n        // 画面にメッセージを表示します\n        Console.WriteLine(\"Welcome to Unity programming!\"); // ようこそ！のメッセージ\n        Console.WriteLine(\"Message: \" + message); // 変数 message の中身を表示\n        Console.WriteLine(\"Score: \" + score); // 変数 score の中身を表示\n        Console.WriteLine(\"Active: \" + isActive); // 変数 isActive の中身を表示\n        // プログラム終了\n    }\n}\n",
+    "title": "レッスン 1: 変数と出力",
+    "snippets": [
+      { "label": "変数宣言", "code": "int number = 0;" },
+      {
+        "label": "Console.WriteLine",
+        "code": "Console.WriteLine(\"Hello World\");"
+      }
+    ],
+    "content": "<p>このレッスンでは、プログラムの「箱」である変数と、結果を画面に表示する方法を学びます。変数はゲームのキャラクターのHPやスコアを保存するときに使います。</p>",
+    "details": [
+      "変数ってなに？「データを入れる箱」のこと。名前をつけて、その中に数字や文字をしまっておけるよ。",
+      "箱を作る（宣言） — int や string を使って箱を用意するよ。",
+      "箱に入れる（代入） — 箱に 100 や \"こんにちは\" などを入れてみよう。",
+      "箱から取り出す（参照） — Console.WriteLine で箱の中身を画面に表示しよう。",
+      "画面に文字を表示 — Console.WriteLine を使うと、黒い画面に文字を出せるよ。何が入っているかすぐにわかるね！",
+      "日本語を表示するには — Console.OutputEncoding = Encoding.UTF8; を書くと、ひらがなや漢字もきれいに見えるよ。",
+      "ミニワーク — 自分の名前を変数に入れて「こんにちは、○○さん！」と表示してみよう！"
+    ],
+    "sampleCode": "// Lesson 1 Sample: コンソールアプリ\nusing System;\nusing System.Text;\n\nclass Program {\n    static void Main() {\n        Console.OutputEncoding = Encoding.UTF8;\n        string message = \"こんにちは、ゲームの世界へ！\";\n        int score = 50;\n        bool isActive = true;\n        Console.WriteLine(\"メッセージ: \" + message);\n        Console.WriteLine(\"スコア: \" + score);\n        Console.WriteLine(\"アクティブ状態: \" + isActive);\n    }\n}\n",
+    "blockCode": "// ブロック用スニペット\nstring message = \"\";\nint number = 0;\nbool flag = false;\n",
     "duration": "15分",
     "order": 1,
     "quizzes": [
       {
-        "question": "変数とは何ですか？",
-        "options": ["データを入れる箱", "条件に合わせた処理", "繰り返し処理"],
+        "question": "変数の役割は？",
+        "options": ["データを入れる箱", "処理を繰り返す", "条件を分岐する"],
         "correctAnswer": "データを入れる箱",
         "explanations": {
-          "データを入れる箱": "変数は、プログラムで値（数字や文字など）を一時的に保存するための箱のようなものです。",
-          "条件に合わせた処理": "これは if 文などで使われますが、変数自体の役割ではありません。",
-          "繰り返し処理": "これはループ処理で使われる概念であり、変数の説明ではありません。"
+          "データを入れる箱": "変数はプログラム中で値を一時的に保存する場所です。例えば、スコアやメッセージを保持できます。",
+          "処理を繰り返す": "これはループの役割です。",
+          "条件を分岐する": "これは if 文の役割です。"
         }
       },
       {
-        "question": "Console.WriteLine の役割は何ですか？",
-        "options": ["画面に出力する", "入力を受け付ける", "データを格納する"],
+        "question": "Console.WriteLine は何をする？",
+        "options": ["画面に出力する", "入力を受け付ける", "ファイルを保存する"],
         "correctAnswer": "画面に出力する",
         "explanations": {
-          "画面に出力する": "Console.WriteLine は、プログラムの結果やメッセージを画面に表示するための関数です。",
-          "入力を受け付ける": "入力を受けるのは Console.ReadLine などが使われます。",
-          "データを格納する": "変数にデータを格納する機能とは異なります。"
+          "画面に出力する": "指定した文字列をコンソールに表示します。プログラムの動きを確認するときに使います。",
+          "入力を受け付ける": "これは Console.ReadLine の役割です。",
+          "ファイルを保存する": "ファイル操作は別の API が必要です。"
         }
       }
     ]
   },
   {
     "id": "2",
-    "title": "レッスン 2: さらに進んだ C# の基本概念",
-    "content": "<h2>レッスン 2 の概要</h2><p>このレッスンでは、<strong>if 文</strong> を使った条件分岐や、<strong>for/while ループ</strong> を使った繰り返し処理を学びます。実際のコード例を動かしながら、これらの基本概念を理解しましょう。</p>",
-    "sampleCode": "// レッスン 2 のコード例\nusing System; // システムの機能を使えるようにする\n\npublic class AdvancedExample {\n    public static void Main() {\n        // if文による条件分岐\n        if (true) {\n            Console.WriteLine(\"条件が真です\");\n        } else {\n            Console.WriteLine(\"条件が偽です\");\n        }\n\n        // forループによる繰り返し処理\n        for (int i = 0; i < 5; i++) {\n            Console.WriteLine(\"forループ: \" + i);\n        }\n\n        // whileループによる繰り返し処理\n        int j = 0;\n        while (j < 3) {\n            Console.WriteLine(\"whileループ: \" + j);\n            j++;\n        }\n    }\n}\n",
+    "title": "レッスン 2: 条件分岐",
+    "snippets": [
+      { "label": "if 文", "code": "if (score >= 60) { /* 合格 */ }" },
+      {
+        "label": "else 文",
+        "code": "if (x > 0) { /* 正 */ } else { /* それ以外 */ }"
+      }
+    ],
+    "content": "<p>「もし～なら」という判断をプログラムで表現する方法を学びます。ゲームでHPが0ならゲームオーバー、スコアが100以上でレベルアップ、などに使います。</p>",
+    "details": [
+      "もし～なら？ — if 文で「条件が合っていたら」だけ中の処理を実行できるよ。",
+      "それ以外のときは？ — else を使うと、if の条件に合わなかったときに別の処理を実行できるよ。",
+      "たくさんの条件を調べる — else if を使うと「Aなら」「それでもBなら…」と順番にチェックできるよ。",
+      "くらべるマーク — ==, !=, >, <, >=, <= の意味を覚えよう。",
+      "ミニワーク — 得点が80以上なら「すごい！」、60以上なら「合格」、それ以外は「残念」と表示してみよう！"
+    ],
+    "sampleCode": "// Lesson 2 Sample: コンソールアプリ\nusing System;\nusing System.Text;\n\nclass Program {\n    static void Main() {\n        Console.OutputEncoding = Encoding.UTF8;\n        int score = 75;\n        if (score >= 80) Console.WriteLine(\"すごい！\");\n        else if (score >= 60) Console.WriteLine(\"合格です\");\n        else Console.WriteLine(\"残念でした\");\n    }\n}\n",
+    "blockCode": "// ブロック用スニペット\nif (/* 条件 */) {\n  // 処理\n} else {\n  // 別の処理\n}\n",
     "duration": "20分",
     "order": 2,
     "quizzes": [
       {
-        "question": "if 文で使うキーワードはどれですか？",
+        "question": "if 文で使うキーワードは？",
         "options": ["if", "for", "while"],
         "correctAnswer": "if",
         "explanations": {
-          "if": "if 文は、ある条件が成立するかどうかをチェックし、その結果に応じて処理を分岐するために使用します。",
-          "for": "for 文は、一定の回数繰り返すためのループ処理に使用されます。",
-          "while": "while 文は、条件が成立している間、処理を繰り返すために使用されます。"
+          "if": "条件が true のときに中の処理を実行します。",
+          "for": "繰り返し処理を行う構文です。",
+          "while": "条件が true の間繰り返す構文です。"
         }
       },
       {
-        "question": "for ループの基本構文はどれですか？",
-        "options": [
-          "for (int i = 0; i < 10; i++) { ... }",
-          "if (i < 10) { ... }",
-          "while (i < 10) { ... }"
-        ],
-        "correctAnswer": "for (int i = 0; i < 10; i++) { ... }",
+        "question": "else はいつ使う？",
+        "options": ["条件が false のとき", "常に実行", "ループを抜ける"],
+        "correctAnswer": "条件が false のとき",
         "explanations": {
-          "for (int i = 0; i < 10; i++) { ... }": "for ループは、初期化、条件判定、更新を含む繰り返し処理の基本的な構文です。",
-          "if (i < 10) { ... }": "if 文は条件分岐に使い、ループ処理には適していません。",
-          "while (i < 10) { ... }": "while 文もループ処理ですが、for ループの構文とは異なります。"
+          "条件が false のとき": "if の条件が false の場合に else の中身が実行されます。",
+          "常に実行": "常に実行したいなら if 文を使いません。",
+          "ループを抜ける": "ループの抜けは break 文を使います。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "レッスン 3: ループ",
+    "snippets": [
+      {
+        "label": "for ループ",
+        "code": "for (int i = 0; i < 5; i++) { Console.WriteLine(i); }"
+      },
+      {
+        "label": "while ループ",
+        "code": "int j=0; while(j<3){ Console.WriteLine(j); j++; }"
+      }
+    ],
+    "content": "<p>同じ処理をくり返す「ループ」の仕組みを学びます。敵を何度も表示したり、★を並べたりするときに使います。</p>",
+    "details": [
+      "for ループ — 「初期化→条件→更新」を一行で書ける便利な方法。",
+      "while ループ — 条件が true の間ずっとくり返す方法。終わる条件を書き忘れないようにね！",
+      "無限ループに注意 — 終わる条件がないとプログラムが止まらなくなるよ。",
+      "ネストループ — ループの中にループを書くと「行×列」の繰り返しもできるよ。",
+      "ミニワーク — ★を5列×3行で並べて表示してみよう！"
+    ],
+    "sampleCode": "// Lesson 3 Sample: コンソールアプリ\nusing System;\nusing System.Text;\n\nclass Program {\n    static void Main() {\n        Console.OutputEncoding = Encoding.UTF8;\n        for(int i=0;i<5;i++) Console.WriteLine(\"★\" + (i+1));\n        int j=0;\n        while(j<3) Console.WriteLine(\"行:\" + (++j));\n    }\n}\n",
+    "blockCode": "// ブロック用スニペット\nfor(int i=0;i</*回数*/;i++){}\nint j=0;while(j</*回数*/){ j++; }\n",
+    "duration": "20分",
+    "order": 3,
+    "quizzes": [
+      {
+        "question": "for ループは何をする？",
+        "options": [
+          "同じ処理を繰り返す",
+          "条件をチェックする",
+          "関数を呼び出す"
+        ],
+        "correctAnswer": "同じ処理を繰り返す",
+        "explanations": {
+          "同じ処理を繰り返す": "指定した回数または条件のあいだくり返し処理を行います。",
+          "条件をチェックする": "if 文の役割です。",
+          "関数を呼び出す": "メソッド呼び出しは別の構文です。"
         }
       },
       {
-        "question": "while ループはどのような場合に使いますか？",
+        "question": "無限ループを防ぐためには？",
         "options": [
-          "条件が成立する間、繰り返し処理を行うため",
-          "条件に応じた分岐処理を行うため",
-          "コードを一回だけ実行するため"
+          "更新処理を書く",
+          "条件を常に true にする",
+          "break を使わない"
         ],
-        "correctAnswer": "条件が成立する間、繰り返し処理を行うため",
+        "correctAnswer": "更新処理を書く",
         "explanations": {
-          "条件が成立する間、繰り返し処理を行うため": "while ループは、条件が true の間、処理を繰り返し実行するために使用します。",
-          "条件に応じた分岐処理を行うため": "これは if 文の役割です。",
-          "コードを一回だけ実行するため": "一回だけの実行なら、通常のコードの流れで十分です。"
+          "更新処理を書く": "ループ内で変数を更新し、条件を false にできるようにします。",
+          "条件を常に true にする": "無限ループになってしまいます。",
+          "break を使わない": "break を使うと途中で抜けられますが、根本的な更新処理も必要です。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "title": "レッスン 4: 関数（メソッド）",
+    "snippets": [
+      {
+        "label": "メソッド定義",
+        "code": "void Greet() { Console.WriteLine(\"Hello!\"); }"
+      },
+      { "label": "引数付き", "code": "int Add(int a,int b){return a+b;}" }
+    ],
+    "content": "<p>よく使う処理をまとめて「関数」にします。コードが短く・見やすくなるコツです。</p>",
+    "details": [
+      "関数ってなに？ — 名前をつけた処理のかたまりで、何度でも呼び出せるよ。",
+      "引数と戻り値 — 関数に渡すデータ（引数）、返す結果（戻り値）の仕組みを学ぼう。",
+      "再利用性 — 同じ処理を何度も書かずに呼ぶだけで使えるよ。",
+      "オーバーロード — 同じ名前で引数の数や型を変えて定義できるテクニック。",
+      "ミニワーク — 2つの数の平均を返す関数を作って、結果を表示してみよう！"
+    ],
+    "sampleCode": "// Lesson 4 Sample: コンソールアプリ\nusing System;\nusing System.Text;\n\nclass Program {\n    static void Main() {\n        Console.OutputEncoding = Encoding.UTF8;\n        Greet();\n        int sum = Add(3,5);\n        Console.WriteLine(\"3+5=\" + sum);\n        double avg = Average(3,5);\n        Console.WriteLine(\"平均=\" + avg);\n    }\n    static void Greet(){ Console.WriteLine(\"こんにちは！\"); }\n    static int Add(int a,int b){return a+b;}\n    static double Average(int a,int b){return (a+b)/2.0;}\n}\n",
+    "blockCode": "// ブロック用スニペット\nvoid MyFunc(){}\nint Calc(int x,int y){return x+y;}\n",
+    "duration": "20分",
+    "order": 4,
+    "quizzes": [
+      {
+        "question": "関数を定義するときのキーワードは？",
+        "options": ["static", "if", "for"],
+        "correctAnswer": "static",
+        "explanations": {
+          "static": "メソッドを呼び出し元から直接呼べるようにします。インスタンス生成不要。",
+          "if": "条件分岐に使うキーワードです。",
+          "for": "繰り返し処理に使うキーワードです。"
+        }
+      },
+      {
+        "question": "return は何をする？",
+        "options": ["呼び出し元に戻す", "繰り返す", "停止する"],
+        "correctAnswer": "呼び出し元に戻す",
+        "explanations": {
+          "呼び出し元に戻す": "メソッドの実行結果を返して処理を抜けます。",
+          "繰り返す": "これはループ処理の役割です。",
+          "停止する": "処理を終了する働きもありますが、主に値を返します。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "title": "レッスン 5: 座標と移動（疑似）",
+    "snippets": [
+      {
+        "label": "Vector3 クラス",
+        "code": "class Vector3 { public double X,Y,Z; public Vector3(double x,double y,double z){X=x;Y=y;Z=z;} }"
+      },
+      {
+        "label": "Translate 疑似",
+        "code": "pos.X += dx; pos.Y += dy; pos.Z += dz;"
+      }
+    ],
+    "content": "<p>3D空間の座標（x,y,z）の仕組みと、オブジェクトの移動を疑似的に学びます。</p>",
+    "details": [
+      "3つの数字で位置を表す — x（横）、y（高さ）、z（奥行き）を合わせて場所を決めるよ。",
+      "絶対移動（疑似） — pos = new Vector3(x,y,z) として一気に移動できるイメージ。",
+      "相対移動（疑似） — pos.X += dx のように「ちょっとずつ」動かせるよ。",
+      "回転や拡大縮小（疑似） — 数字を変えるだけでイメージは同じ。",
+      "ミニワーク — (0,0,0)から(2,1,0)に移動し、座標をログに出してみよう！"
+    ],
+    "sampleCode": "// Lesson 5 Sample: コンソールアプリ疑似実装\nusing System;\nusing System.Text;\n\nclass Vector3 { public double X,Y,Z; public Vector3(double x,double y,double z){X=x;Y=y;Z=z;} public override string ToString() => $\"({X},{Y},{Z})\"; }\n\nclass Program {\n    static void Main() {\n        Console.OutputEncoding = Encoding.UTF8;\n        var pos = new Vector3(0,0,0);\n        Console.WriteLine(\"Start: \" + pos);\n        pos = new Vector3(2,1,0);\n        Console.WriteLine(\"Moved: \" + pos);\n    }\n}\n",
+    "blockCode": "// ブロック用スニペット\npos = new Vector3(x,y,z);\npos.X += dx;\n",
+    "duration": "20分",
+    "order": 5,
+    "quizzes": [
+      {
+        "question": "絶対座標で移動するプロパティは？",
+        "options": [
+          "transform.position",
+          "transform.Translate",
+          "transform.Rotate"
+        ],
+        "correctAnswer": "transform.position",
+        "explanations": {
+          "transform.position": "ワールド座標で直接位置を設定します。",
+          "transform.Translate": "現在位置からの相対移動です。",
+          "transform.Rotate": "オブジェクトを回転させます。"
+        }
+      },
+      {
+        "question": "相対移動に使うメソッドは？",
+        "options": ["Translate", "position", "Rotate"],
+        "correctAnswer": "Translate",
+        "explanations": {
+          "Translate": "現在位置から指定量だけ移動します。",
+          "position": "絶対座標を設定します。",
+          "Rotate": "回転に使用します。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "title": "レッスン 6: 入力処理（疑似）",
+    "snippets": [
+      {
+        "label": "キー入力",
+        "code": "var key = Console.ReadKey(true); if (key.Key == ConsoleKey.Spacebar) Console.WriteLine(\"Jump!\");"
+      }
+    ],
+    "content": "<p>キーボードの入力を受け取って動きをつくる方法を学びます。スペースキーでジャンプ、といった操作に使います。</p>",
+    "details": [
+      "キーのいろいろ — Console.ReadKey で押したキーを取得できるよ。",
+      "スペースキーを検知 — key.Key == ConsoleKey.Spacebar でJump!と表示。",
+      "エスケープキーで終了 — ConsoleKey.Escape を使う例。",
+      "ループで待ち受け — while文で繰り返し待ち続けられるよ。",
+      "ミニワーク — スペースで「Jump!」、Escでアプリを終了してみよう！"
+    ],
+    "sampleCode": "// Lesson 6 Sample: コンソールアプリ疑似実装\nusing System;\nusing System.Text;\n\nclass Program {\n    static void Main() {\n        Console.OutputEncoding = Encoding.UTF8;\n        Console.WriteLine(\"SpaceキーでJump! Escで終了\");\n        ConsoleKeyInfo key;\n        do {\n            key = Console.ReadKey(true);\n            if (key.Key == ConsoleKey.Spacebar)\n                Console.WriteLine(\"Jump!\");\n        } while (key.Key != ConsoleKey.Escape);\n    }\n}\n",
+    "blockCode": "// ブロック用スニペット\nvar key = Console.ReadKey(true);\nif (key.Key == ConsoleKey.Spacebar) { /* 処理 */ }\n",
+    "duration": "20分",
+    "order": 6,
+    "quizzes": [
+      {
+        "question": "キーが押された瞬間を検知するのは？",
+        "options": ["GetKeyDown", "GetKey", "GetKeyUp"],
+        "correctAnswer": "GetKeyDown",
+        "explanations": {
+          "GetKeyDown": "キーを押した瞬間に true を返します。",
+          "GetKey": "キーを押し続けている間 true を返します。",
+          "GetKeyUp": "キーを離した瞬間に true を返します。"
+        }
+      },
+      {
+        "question": "マウス位置を取得するプロパティは？",
+        "options": ["mousePosition", "mouseScrollDelta", "mousePresent"],
+        "correctAnswer": "mousePosition",
+        "explanations": {
+          "mousePosition": "画面上のマウス座標を Vector3 で取得します。",
+          "mouseScrollDelta": "ホイールの回転量を返します。",
+          "mousePresent": "マウスが接続されているかを返します。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "title": "レッスン 7: 衝突判定（疑似）",
+    "snippets": [
+      {
+        "label": "座標比較",
+        "code": "if(a.PosX==b.PosX && a.PosY==b.PosY) Console.WriteLine($\"Hit {b.Name}\");"
+      }
+    ],
+    "content": "<p>オブジェクト同士が同じ場所にいるかを調べる方法を学びます。ぶつかったら何か起こす処理に使います。</p>",
+    "details": [
+      "ぶつかる仕組み — 座標が同じかどうかを比較するよ。",
+      "名前で区別 — どのオブジェクトとぶつかったかを Name プロパティで表示。",
+      "疑似GameObject — 自作クラスで位置と名前を持たせる。",
+      "ミニワーク — Cube と Sphere の座標が同じなら「Hit Sphere」と出してみよう！"
+    ],
+    "sampleCode": "// Lesson 7 Sample: コンソールアプリ疑似実装\nusing System;\n\nclass GameObject { public string Name; public int PosX,PosY; public GameObject(string n,int x,int y){Name=n;PosX=x;PosY=y;} }\nclass Program {\n    static void Main() {\n        var a = new GameObject(\"Cube\",0,0);\n        var b = new GameObject(\"Sphere\",0,0);\n        if(a.PosX==b.PosX && a.PosY==b.PosY)\n            Console.WriteLine($\"Hit {b.Name}\");\n    }\n}\n",
+    "blockCode": "// ブロック用スニペット\nif (obj1.X==obj2.X && obj1.Y==obj2.Y) { /* 衝突処理 */ }\n",
+    "duration": "20分",
+    "order": 7,
+    "quizzes": [
+      {
+        "question": "衝突を検知するメソッドは？",
+        "options": ["OnCollisionEnter", "OnTriggerEnter", "OnMouseDown"],
+        "correctAnswer": "OnCollisionEnter",
+        "explanations": {
+          "OnCollisionEnter": "物理衝突を検知して呼ばれます。",
+          "OnTriggerEnter": "Trigger モードの衝突を検知します。",
+          "OnMouseDown": "クリック入力を検知します。"
+        }
+      },
+      {
+        "question": "タグを比較するメソッドは？",
+        "options": ["CompareTag", "FindWithTag", "tag"],
+        "correctAnswer": "CompareTag",
+        "explanations": {
+          "CompareTag": "指定したタグ名と一致するか調べます。",
+          "FindWithTag": "タグ付きオブジェクトを検索します。",
+          "tag": "オブジェクト自身のタグを文字列で取得します。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "title": "レッスン 8: UI とシーン管理（疑似）",
+    "snippets": [
+      {
+        "label": "メニュー表示",
+        "code": "Console.WriteLine(\"1: Start\"); var key=Console.ReadKey(true);"
+      },
+      {
+        "label": "シーン切替",
+        "code": "if(key.KeyChar=='1') Console.WriteLine(\"Loading GameScene…\");"
+      }
+    ],
+    "content": "<p>メニューを作って、選択によって画面（シーン）を切り替えるイメージを学びます。</p>",
+    "details": [
+      "メニュー表示 — Console.WriteLine で選択肢を出す。",
+      "キーで選択 — Console.ReadKey で何を押したかを調べる。",
+      "シーン切替 — 押された値によって処理を変える。",
+      "演出の疑似 — テキストで「Loading…」を表示。",
+      "ミニワーク — 1を押すと「GameSceneへ移動」と出してみよう！"
+    ],
+    "sampleCode": "// Lesson 8 Sample: コンソールアプリ疑似実装\nusing System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine(\"1: Start Game\");\n        var key = Console.ReadKey(true);\n        if (key.KeyChar == '1')\n            Console.WriteLine(\"Loading GameScene...\");\n    }\n}\n",
+    "blockCode": "// ブロック用スニペット\nConsole.WriteLine(\"1: Start\");\nvar key = Console.ReadKey(true);\n",
+    "duration": "25分",
+    "order": 8,
+    "quizzes": [
+      {
+        "question": "UI ボタンのクリック登録は？",
+        "options": ["onClick.AddListener", "onSubmit", "onValueChanged"],
+        "correctAnswer": "onClick.AddListener",
+        "explanations": {
+          "onClick.AddListener": "クリック時の処理を登録します。",
+          "onSubmit": "InputField の送信時に使います。",
+          "onValueChanged": "スライダーなどの値変化時に使います。"
+        }
+      },
+      {
+        "question": "シーン切替に使うクラスは？",
+        "options": ["SceneManager", "GameObject", "Application"],
+        "correctAnswer": "SceneManager",
+        "explanations": {
+          "SceneManager": "シーンの読み込み・切り替えを行うクラスです。",
+          "GameObject": "ゲームオブジェクトそのもののクラスです。",
+          "Application": "アプリ全体の設定に使います。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "title": "レッスン 9: サウンド（疑似）",
+    "snippets": [
+      { "label": "BGM開始", "code": "Console.WriteLine(\"Playing BGM…\");" },
+      {
+        "label": "効果音",
+        "code": "if(key.Key==ConsoleKey.Spacebar) Console.WriteLine(\"Play SFX!\");"
+      }
+    ],
+    "content": "<p>BGMや効果音を鳴らすイメージを学びます。本物の音ではなく、コンソール出力で疑似体験します。</p>",
+    "details": [
+      "BGM開始 — Console.WriteLine で「Playing BGM…」と表示。",
+      "キーで効果音 — Console.ReadKey でスペースを押したら「Play SFX!」と出す。",
+      "ループ再生の疑似 — while で繰り返しBGMを流すイメージ。",
+      "音量調整はテキストで説明だけ。",
+      "ミニワーク — アプリ起動時にBGM、スペースで効果音を鳴らしてみよう！"
+    ],
+    "sampleCode": "// Lesson 9 Sample: コンソールアプリ疑似実装\nusing System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine(\"Playing BGM...\");\n        ConsoleKeyInfo key;\n        Console.WriteLine(\"Press Space for SFX, Esc to exit\");\n        do {\n            key = Console.ReadKey(true);\n            if (key.Key == ConsoleKey.Spacebar)\n                Console.WriteLine(\"Play SFX!\");\n        } while (key.Key != ConsoleKey.Escape);\n    }\n}\n",
+    "blockCode": "// ブロック用スニペット\nConsole.WriteLine(\"Playing BGM...\");\n",
+    "duration": "20分",
+    "order": 9,
+    "quizzes": [
+      {
+        "question": "サウンドを再生するメソッドは？",
+        "options": ["Play", "Stop", "Pause"],
+        "correctAnswer": "Play",
+        "explanations": {
+          "Play": "AudioSource の再生を開始します。",
+          "Stop": "再生を停止します。",
+          "Pause": "一時停止します。"
+        }
+      },
+      {
+        "question": "音量を設定するプロパティは？",
+        "options": ["volume", "pitch", "loop"],
+        "correctAnswer": "volume",
+        "explanations": {
+          "volume": "再生音の大きさを 0～1 で設定します。",
+          "pitch": "音の高さ（速度）を調整します。",
+          "loop": "ループ再生するかを設定します。"
         }
       }
     ]

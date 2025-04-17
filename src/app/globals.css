@@ -1,9 +1,29 @@
+/* src/app/globals.css */
 @import "tailwindcss";
-
 @import "tw-animate-css";
 
 @layer base {
   body {
-    @apply bg-zinc-700 text-gray-100;
+    /* 背景は濃いめ、本文は少し明るいグレー */
+    @apply bg-zinc-700 text-gray-200;
+  }
+  /* 見出しや太字は白で強調 */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .font-bold {
+    @apply text-white;
+  }
+  /* リンクはアクセントカラー */
+  a {
+    @apply text-amber-400 hover:text-amber-300;
+  }
+  /* コードブロック内のテキスト */
+  code,
+  .prose code {
+    @apply bg-zinc-600 text-amber-300;
   }
 }

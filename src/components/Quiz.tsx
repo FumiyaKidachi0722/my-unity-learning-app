@@ -12,7 +12,7 @@ interface QuizProps {
   question: string;
   options: string[];
   correctAnswer: string;
-  explanations: { [option: string]: string | undefined };
+  explanations: Record<string, string>;
 }
 
 export const Quiz: React.FC<QuizProps> = ({
@@ -22,52 +22,93 @@ export const Quiz: React.FC<QuizProps> = ({
   explanations,
 }) => {
   const [selected, setSelected] = useState<string>("");
-  const [result, setResult] = useState<string>("");
+  const [submitted, setSubmitted] = useState(false);
+  const [showHint, setShowHint] = useState(false);
 
   const handleSubmit = () => {
     if (!selected) return;
-    const isCorrect = selected === correctAnswer;
-    setResult(isCorrect ? "正解！" : "不正解...");
+    setSubmitted(true);
+    // 正解なら自動で解説表示
+    if (selected === correctAnswer) {
+      setShowHint(true);
+    }
   };
 
+  const isCorrect = submitted && selected === correctAnswer;
+
   return (
-    <Card className="p-4 mb-4">
+    <Card className="mb-6 bg-zinc-800 border-zinc-600 text-gray-200">
       <CardHeader>
-        <h3 className="text-lg font-semibold mb-2">{question}</h3>
+        <h3 className="text-lg font-semibold text-white">{question}</h3>
       </CardHeader>
+
       <CardContent>
-        <ul className="mb-2">
-          {options.map((option) => (
-            <li key={option} className="mb-1">
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  name="quiz"
-                  value={option}
-                  className="mr-2"
-                  onChange={() => setSelected(option)}
-                />
-                {option}
-              </label>
-            </li>
-          ))}
+        <ul className="space-y-3 list-none p-0">
+          {options.map((option) => {
+            const isSelected = option === selected;
+            return (
+              <li key={option}>
+                <label className="flex items-start space-x-3">
+                  <input
+                    type="radio"
+                    name={question}
+                    value={option}
+                    checked={isSelected}
+                    onChange={() => {
+                      setSelected(option);
+                      setSubmitted(false);
+                      setShowHint(false);
+                    }}
+                    className="mt-1 accent-amber-500"
+                  />
+                  <span className="text-gray-200">{option}</span>
+                </label>
+                {submitted && isSelected && (
+                  <p
+                    className={`mt-1 ml-8 text-sm ${
+                      isCorrect ? "text-green-300" : "text-red-300"
+                    }`}
+                  >
+                    {isCorrect ? "✅ 正解です！" : "❌ 不正解です…"}
+                  </p>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </CardContent>
+
       <CardFooter className="flex flex-col gap-2">
-        <Button className="bg-amber-700" onClick={handleSubmit}>
-          回答する
-        </Button>
-        {result && (
-          <>
-            <p className="mt-2 font-bold">{result}</p>
-            <div className="mt-2">
-              {options.map((option) => (
-                <div key={option} className="mb-1">
-                  <strong>{option}:</strong> {explanations[option]}
-                </div>
-              ))}
-            </div>
-          </>
+        <div className="flex space-x-2">
+          <Button
+            variant="outline"
+            className="border-amber-600 text-amber-400 hover:bg-zinc-700"
+            onClick={handleSubmit}
+            disabled={!selected}
+          >
+            回答
+          </Button>
+
+          {/* 不正解時のみヒントボタンを表示 */}
+          {submitted && !isCorrect && (
+            <Button
+              variant="outline"
+              className="border-gray-500 text-gray-400 hover:bg-zinc-700"
+              onClick={() => setShowHint((v) => !v)}
+            >
+              {showHint ? "ヒントを隠す" : "ヒントを見る"}
+            </Button>
+          )}
+        </div>
+
+        {/* 解説表示 */}
+        {submitted && showHint && selected && (
+          <div className="mt-2 ml-0">
+            <h4 className="text-sm font-semibold text-white">
+              {isCorrect ? "解説" : "ヒント"}
+            </h4>
+            <p className="mt-1 ml-2 text-gray-200">{explanations[selected]}</p>
+          </div>
         )}
       </CardFooter>
     </Card>

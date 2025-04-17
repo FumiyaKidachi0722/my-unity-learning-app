@@ -1,0 +1,10 @@
+{
+  "completedLessons": [
+    { "id": "1", "title": "Unity と C# の基本" },
+    { "id": "2", "title": "さらに進んだ C# の基本" }
+  ],
+  "badges": [
+    { "id": "badge1", "name": "レッスン1完了" },
+    { "id": "badge2", "name": "連続ログイン3日達成" }
+  ]
+}

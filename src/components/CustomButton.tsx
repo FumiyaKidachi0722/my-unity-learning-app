@@ -1,6 +1,5 @@
-// src/components/CustomButton.tsx
 import React from "react";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 
 interface CustomButtonProps {
   onClick: () => void;
@@ -10,10 +9,12 @@ interface CustomButtonProps {
 export const CustomButton: React.FC<CustomButtonProps> = ({
   onClick,
   children,
-}) => {
-  return (
-    <Button onClick={onClick} variant="default" className="bg-amber-700 m-2">
-      {children}
-    </Button>
-  );
-};
+}) => (
+  <Button
+    onClick={onClick}
+    variant="secondary"
+    className="m-2 bg-amber-600 text-white hover:bg-amber-500"
+  >
+    {children}
+  </Button>
+);
